@@ -1,8 +1,8 @@
 {
-  "name": "yxms-user-subapp1",
+  "name": "subapp1",
   "version": "0.1.0",
   "private": true,
-  "description": "yxms-user的子应用",
+  "description": "微前端子应用",
   "scripts": {
     "serve": "vue-cli-service serve --mode dev",
     "serve:prod": "vue-cli-service serve --mode prod",
