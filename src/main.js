@@ -1,46 +1,46 @@
-import './public-path'
-import Vue from 'vue'
-import App from './App.vue'
-import routes from './router'
-import store from './store'
-import commonStore from './store/globalStore'
-import VueRouter from 'vue-router'
-Vue.config.productionTip = false
-let instance = null
-console.log('进入子容器1')
+import "./public-path";
+import Vue from "vue";
+import App from "./App.vue";
+import routes from "./router";
+import store from "./store";
+import commonStore from "./store/globalStore";
+import VueRouter from "vue-router";
+Vue.config.productionTip = false;
+let instance = null;
+console.log("进入子容器1");
 function render (props = {}) {
-  const { container, routerBase } = props
+  const { container, routerBase } = props;
   const router = new VueRouter({
     base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.VUE_APP_ROUTER_BASE_URL,
-    mode: 'history',
-    routes
-  })
+    mode: "history",
+    routes,
+  });
   instance = new Vue({
     router,
     store,
-    render: (h) => h(App)
-  }).$mount(container ? container.querySelector('#app') : '#app')
+    render: (h) => h(App),
+  }).$mount(container ? container.querySelector("#app") : "#app");
 }
 // 当子应用独立运行时
 if (!window.__POWERED_BY_QIANKUN__) {
   // 也要实现子应用登录的逻辑
   // 独立运行时，也注册一个名为global的store module
-  commonStore.globalRegister(store)
+  commonStore.globalRegister(store);
   // 模拟登录后，存储用户信息到global module
-  const userInfo = { name: '我是独立运行时名字叫张三' } // 假设登录后取到的用户信息
-  store.commit('global/setGlobalState', { user: userInfo })
-  render()
+  const userInfo = { name: "我是独立运行时名字叫张三" }; // 假设登录后取到的用户信息
+  store.commit("global/setGlobalState", { user: userInfo });
+  render();
 }
 export async function bootstrap () {
-  console.log('[vue] vue app bootstraped')
+  console.log("[vue] vue app bootstraped");
 }
 export async function mount (props) {
-  console.log('[vue] props from main framework', props)
-  commonStore.globalRegister(store, props)
-  render(props)
+  console.log("[vue] props from main framework", props);
+  commonStore.globalRegister(store, props);
+  render(props);
 }
 export async function unmount () {
-  instance.$destroy()
-  instance.$el.innerHTML = ''
-  instance = null
+  instance.$destroy();
+  instance.$el.innerHTML = "";
+  instance = null;
 }
