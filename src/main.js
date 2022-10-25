@@ -28,7 +28,7 @@ if (!window.__POWERED_BY_QIANKUN__) {
   commonStore.globalRegister(store);
   // 模拟登录后，存储用户信息到global module
   const userInfo = { name: "我是独立运行时名字叫张三" }; // 假设登录后取到的用户信息
-  store.commit("global/setGlobalState", { user: userInfo });
+  store.commit("global/setGlobalState", { userInfo });
   render();
 }
 export async function bootstrap () {
