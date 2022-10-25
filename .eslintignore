@@ -5,3 +5,4 @@ dist
 src/icons
 node_modules/
 /src/manifest.json
+/src/public-path.js

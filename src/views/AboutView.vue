@@ -6,8 +6,8 @@
 <script>
 
 export default {
-  name: 'AboutView',
+  name: "AboutView",
   components: {
-  }
-}
+  },
+};
 </script>
