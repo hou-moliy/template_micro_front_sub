@@ -2,7 +2,7 @@
   <div id="app">
     子应用1-vue
     <nav>
-      <router-link to="/">Home</router-link> |
+      <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav>
     <router-view />

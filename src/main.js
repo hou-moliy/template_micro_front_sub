@@ -9,9 +9,9 @@ Vue.config.productionTip = false;
 let instance = null;
 console.log("进入子容器1");
 function render (props = {}) {
-  const { container, routerBase } = props;
+  const { container, name, routerBase } = props;
   const router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? routerBase : process.env.VUE_APP_ROUTER_BASE_URL,
+    base: window.__POWERED_BY_QIANKUN__ ? (routerBase || name) : process.env.VUE_APP_ROUTER_BASE_URL,
     mode: "history",
     routes,
   });
@@ -39,7 +39,12 @@ export async function mount (props) {
   commonStore.globalRegister(store, props);
   render(props);
 }
+export async function update (props) {
+  console.log("更新", props);
+  render(props);
+}
 export async function unmount () {
+  debugger;
   instance.$destroy();
   instance.$el.innerHTML = "";
   instance = null;

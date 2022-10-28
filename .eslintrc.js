@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
+    node: true,
   },
   extends: [ // 检查包括了那些规范，通过这个节点可以配置使用 内置规范 还是 第三方规范
     "plugin:vue/vue3-essential",
@@ -17,7 +18,7 @@ module.exports = {
     },
   ],
   parserOptions: {
-    ecmaVersion: "latest", // ECMAScript 版本,最新的
+    ecmaVersion: 12, // ECMAScript 版本,最新的
   },
   plugins: [ // eslint支持使用第三方插件，需要npm先安装,后使用
     "vue", // 可以用package的名称,eslint-plugin-vue，也可以省略eslint-plugin-,直接填写vue
@@ -39,5 +40,7 @@ module.exports = {
     "no-nested-ternary": "error", // 禁止使用嵌套的三元表达式
     "space-before-function-paren": [2, "always"], // 函数定义时括号前面必须有空格
     eqeqeq: [1, "always"], // 警告，要求使用 === 和 !==,这里似乎和sonar有点差异
+    "no-console": process.env.NODE_ENV === "prod" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "prod" ? "warn" : "off",
   },
 };

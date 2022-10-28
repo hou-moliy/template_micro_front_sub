@@ -4,12 +4,9 @@ import HomeView from "@/views/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
 
 Vue.use(VueRouter);
-// const view = function (name) {
-//   return () => import(`@/views/${name}.vue`)
-// }
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "home",
     component: HomeView,
   },
@@ -17,8 +14,6 @@ const routes = [
     path: "/about",
     name: "about",
     component: AboutView,
-    // component: resolve => require(['@/views/AboutView.vue'], resolve)
-    // component: view('AboutView'),
   },
 ];
 
