@@ -1,8 +1,10 @@
 <template>
   <div class="about">
     <h4>This is an about page 子应用</h4>
-    <h5>主应用带过来的消息：{{$store.state.global.userInfo.name}}</h5>
-    <button @click="changeName">改变名字</button>
+    <h5>主应用带过来的消息：{{ $store.state.global.userInfo.name }}</h5>
+    <button @click="changeName">
+      改变名字
+    </button>
   </div>
 </template>
 <script>

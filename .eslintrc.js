@@ -6,7 +6,7 @@ module.exports = {
     node: true,
   },
   extends: [ // 检查包括了那些规范，通过这个节点可以配置使用 内置规范 还是 第三方规范
-    "plugin:vue/vue3-essential",
+    "plugin:vue/recommended",
     "standard",
   ],
   overrides: [
@@ -19,6 +19,9 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 12, // ECMAScript 版本,最新的
+    vueFeatures: {
+      filter: false, // Don't!!
+    },
   },
   plugins: [ // eslint支持使用第三方插件，需要npm先安装,后使用
     "vue", // 可以用package的名称,eslint-plugin-vue，也可以省略eslint-plugin-,直接填写vue
@@ -33,6 +36,7 @@ module.exports = {
     // always（默认）：举例在语句末尾需要分号
     // never：举例不允许加分号
     // 举例=>  "semi":[2,'never'] 表示不允许有分号，有分号就会报错
+    indent: ["error", 2, { SwitchCase: 1 }], // 2个空格缩进
     quotes: [1, "double"], // 建议使用双引号
     semi: [1, "always"], // 建议以分号结尾
     "comma-dangle": ["error", "always-multiline"], // 对象字面量项尾是逗号
@@ -42,5 +46,7 @@ module.exports = {
     eqeqeq: [1, "always"], // 警告，要求使用 === 和 !==,这里似乎和sonar有点差异
     "no-console": process.env.NODE_ENV === "prod" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "prod" ? "warn" : "off",
+    "no-tabs": ["error", { allowIndentationTabs: true }],
+    "vue/no-v-model-argument": "off",
   },
 };
